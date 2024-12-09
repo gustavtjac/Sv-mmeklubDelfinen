@@ -1,14 +1,19 @@
 public class Member {
+    protected int memberID;
     protected double membershipFee;
-    private String name;
-    private boolean isMemberActive;
+    protected String name;
+    protected boolean isMemberActive;
     protected boolean inArrears = false;
-    private int age;
+    protected int age;
     public Member(String name, boolean isMemberActive,int age) {
+        // this.memberID; //Lav dette tiil Memberliste+1
         this.name = name;
         this.isMemberActive = isMemberActive;
         this.age = age;
         this.membershipFee = calculateMembershipFee();
+    }
+    public Member(){
+
     }
 public double calculateMembershipFee() {
         if (!this.isMemberActive) {
@@ -20,5 +25,26 @@ public double calculateMembershipFee() {
         }else{
             return MembershipFees.RETIREE.getFee();
         }
+}
+public void setAge(int age) {
+        this.age = age;
+}
+public int getAge() {
+        return this.age;
+}
+public void setName(String name) {
+        this.name = name;
+}
+public String getName() {
+        return this.name;
+}
+public void setMemberActive(boolean isMemberActive) {
+        this.isMemberActive = isMemberActive;
+}
+public boolean isMemberActive() {
+        return this.isMemberActive;
+}
+public String toString() {
+   return this.name + " " + this.age + " " + this.membershipFee + " " + this.isMemberActive;
 }
 }
