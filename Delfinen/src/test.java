@@ -1,5 +1,7 @@
 public class test {
     public static void main(String[] args) {
-        CreateMember.createNewMember();
+        //CreateMember.createNewMember();
+
+        CreateResult.createNewResult();
     }
 }
