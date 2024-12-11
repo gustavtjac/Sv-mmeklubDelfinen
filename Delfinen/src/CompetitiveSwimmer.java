@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-
+//TESTER
 public class CompetitiveSwimmer extends Member{
 private ArrayList<SwimmingDisciplines> swimDisciplines = new ArrayList<>();
     public CompetitiveSwimmer(String name, boolean isMemberActive, int age, ArrayList<SwimmingDisciplines> swimmingDisciplines) {
