@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class CreateMember {
 
-
+    //Metode til at oprette nyt medlem inkl. brugerinteraktion
     public static void createNewMember() {
         Scanner sc = new Scanner(System.in);
         String name;

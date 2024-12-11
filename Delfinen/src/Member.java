@@ -15,7 +15,7 @@ public class Member {
     public Member(){
 
     }
-public double calculateMembershipFee() {
+public double calculateMembershipFee() { //Metode til at beregne kontingent
         if (!this.isMemberActive) {
             return MembershipFees.PASSIVE.getFee();
         } else if (this.isMemberActive && this.age<18) {

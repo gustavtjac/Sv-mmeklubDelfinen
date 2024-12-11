@@ -2,13 +2,13 @@ import java.util.Scanner;
 
 public class CreateResult {
 
-    public static void createNewResult() {
+    public static void createNewResult() { //Metode til at oprette nyt stævneresultat inkl. brugerinteraktion
         Scanner sc = new Scanner(System.in);
-        int swimmerID = -1;
-        String tournamentName = "";
-        String date = "";
-        double timeResult = 0;
-        int tournamentPlacement = 0;
+        int swimmerID; //evt. -1
+        String tournamentName;
+        String date;
+        double timeResult;
+        int tournamentPlacement;
         SwimmingDisciplines swimmingDiscipline = null;
 
 
@@ -34,7 +34,7 @@ public class CreateResult {
                 System.out.println("---------------------------------------");
                 System.out.println("Vælg svømmedisciplin:");
                 for (SwimmingDisciplines sd : SwimmingDisciplines.values()) {
-                    System.out.println(sd.ordinal() + 1 + ": " + sd);
+                    System.out.println(sd.ordinal() + 1 + ": " + sd); //ordinal = indeks af enum
                 }
                 int index = Integer.parseInt(sc.nextLine());
                 if (index < 1 || index > SwimmingDisciplines.values().length) {

@@ -10,14 +10,14 @@ private ArrayList<SwimmingDisciplines> swimDisciplines = new ArrayList<>();
         this.swimDisciplines = swimmingDisciplines;
     }
     public CompetitiveSwimmer(String name, boolean isMemberActive, int age) {
-        super(name, isMemberActive, age);
-        this.membershipFee = calculateMembershipFee();
+        super(name, isMemberActive, age); //Egenskaber fra "Member"-klassen
+        this.membershipFee = calculateMembershipFee(); //Kalder metode der beregner kontingent
         this.inArrears = false;
     }
     public CompetitiveSwimmer(){
     }
     public void setSwimDisciplines(ArrayList<SwimmingDisciplines> swimDisciplines) {
-        this.swimDisciplines = swimDisciplines;
+        this.swimDisciplines = swimDisciplines; //Setter konkurrencesvømmerens disciplin
     }
     public String toString() {
         return this.name + " " + this.age + " " + this.membershipFee + " " + this.isMemberActive + " " + this.swimDisciplines.toString();
