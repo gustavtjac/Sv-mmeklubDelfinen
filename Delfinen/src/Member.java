@@ -11,7 +11,6 @@ public class Member {
         this.isMemberActive = isMemberActive;
         this.age = age;
         this.membershipFee = calculateMembershipFee();
-        MembersList.getMemberList().add(this);
     }
     public Member(){
 
@@ -45,10 +44,13 @@ public void setMemberActive(boolean isMemberActive) {
 public boolean isMemberActive() {
         return this.isMemberActive;
 }
-public String toString() {
-   return "---------------------\nNavn: "+ this.name + "\nAlder: " + this.age + " år "+ "\nKontigentbeløb: " + this.membershipFee + "Kr." + "\nAktiv: " + this.isMemberActive + "\n---------------------";
-}
-public double getMembershipFee() {
-        return this.membershipFee;
+@Override
+public String toString() { // ændret opsætning for visuel præsentation
+    return "Member{" +
+            "name='" + name + '\'' +
+            ", isMemberActive=" + isMemberActive +
+            ", age=" + age +
+            ", membershipFee=" + membershipFee +
+            '}';
 }
 }

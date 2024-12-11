@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class CompetitiveSwimmer extends Member{
 private ArrayList<SwimmingDisciplines> swimDisciplines = new ArrayList<>();
+
     public CompetitiveSwimmer(String name, boolean isMemberActive, int age, ArrayList<SwimmingDisciplines> swimmingDisciplines) {
         super(name, isMemberActive, age);
         this.membershipFee = calculateMembershipFee();
@@ -10,7 +11,7 @@ private ArrayList<SwimmingDisciplines> swimDisciplines = new ArrayList<>();
         this.swimDisciplines = swimmingDisciplines;
     }
     public CompetitiveSwimmer(String name, boolean isMemberActive, int age) {
-        super(name, isMemberActive, age); //Egenskaber fra "Member"-klassen
+        super(name, isMemberActive, age);
         this.membershipFee = calculateMembershipFee(); //Kalder metode der beregner kontingent
         this.inArrears = false;
     }
@@ -19,10 +20,16 @@ private ArrayList<SwimmingDisciplines> swimDisciplines = new ArrayList<>();
     public void setSwimDisciplines(ArrayList<SwimmingDisciplines> swimDisciplines) {
         this.swimDisciplines = swimDisciplines; //Setter konkurrencesvømmerens disciplin
     }
-    public String toString() {
-        return "Navn: " + this.name + "\nAlder: " + this.age +" år. "+ "\nKontigentbeløb: " + this.membershipFee + " Kr. \nAktiv: " + this.isMemberActive + "\nKonkurrer i følgende discipliner: " + this.swimDisciplines.toString();
+    public String toString() { // ændret i opsætningen for den visuelle præsentation
+        return "CompetitiveSwimmer{" +
+                "name='" + getName() + '\'' +
+                ", isMemberActive=" + isMemberActive() +
+                ", age=" + getAge() +
+                ", swimDisciplines=" + swimDisciplines +
+                ", competitionResults="  +
+                '}';
     }
-    public void setSwimmingDisciplines() { //Metode til at tildele svømmedisciplin til konkurrencesvømmer
+    public void setSwimmingDisciplines() {
         Scanner sc = new Scanner(System.in);
         String tempSvar = "";
 
