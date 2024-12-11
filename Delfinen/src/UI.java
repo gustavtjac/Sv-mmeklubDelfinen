@@ -32,7 +32,7 @@ public class UI { // Hovedmenu med forskellige submenuer, dog med lidt manglende
                     // Lav vis medlemmer funktionalitet
                     break;
                 case 4:
-                    // Lav vis top 5 konkurrence resultatet funktionalitet
+                    chooseFour();
                     break;
                 case 5:
                     // Lav vis kontingentinformation funktionalitet
@@ -46,4 +46,13 @@ public class UI { // Hovedmenu med forskellige submenuer, dog med lidt manglende
             }
         }
     }
+
+    public static void chooseFour() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Vælg svømmedisciplin:");
+        for (SwimmingDisciplines sd : SwimmingDisciplines.values()) {
+            System.out.println(sd.ordinal() + 1 + ": " + sd); //ordinal = indeks af enum
+        }
+    }
 }
+

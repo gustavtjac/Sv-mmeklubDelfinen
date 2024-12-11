@@ -32,6 +32,9 @@ public void setAge(int age) {
 public int getAge() {
         return this.age;
 }
+public double getMembershipFee() {
+        return membershipFee;
+}
 public void setName(String name) {
         this.name = name;
 }
