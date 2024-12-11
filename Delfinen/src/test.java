@@ -1,7 +1,10 @@
 public class test {
     public static void main(String[] args) {
-        //CreateMember.createNewMember();
 
-        CreateResult.createNewResult();
+        new CompetitiveSwimmer("Victor",true,15);
+        new CasualSwimmer("MADS",true,15);
+        new CompetitiveSwimmer("Victor",true,89);
+        new CasualSwimmer("TOBY",true,45);
+        MembersList.displayMembers();
     }
 }

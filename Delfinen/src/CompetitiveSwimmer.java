@@ -20,7 +20,7 @@ private ArrayList<SwimmingDisciplines> swimDisciplines = new ArrayList<>();
         this.swimDisciplines = swimDisciplines; //Setter konkurrencesvømmerens disciplin
     }
     public String toString() {
-        return this.name + " " + this.age + " " + this.membershipFee + " " + this.isMemberActive + " " + this.swimDisciplines.toString();
+        return "Navn: " + this.name + "\nAlder: " + this.age +" år. "+ "\nKontigentbeløb: " + this.membershipFee + " Kr. \nAktiv: " + this.isMemberActive + "\nKonkurrer i følgende discipliner: " + this.swimDisciplines.toString();
     }
     public void setSwimmingDisciplines() { //Metode til at tildele svømmedisciplin til konkurrencesvømmer
         Scanner sc = new Scanner(System.in);
