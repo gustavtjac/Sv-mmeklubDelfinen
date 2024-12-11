@@ -22,7 +22,7 @@ private ArrayList<SwimmingDisciplines> swimDisciplines = new ArrayList<>();
     public String toString() {
         return this.name + " " + this.age + " " + this.membershipFee + " " + this.isMemberActive + " " + this.swimDisciplines.toString();
     }
-    public void setSwimmingDisciplines() {
+    public void setSwimmingDisciplines() { //Metode til at tildele svømmedisciplin til konkurrencesvømmer
         Scanner sc = new Scanner(System.in);
         String tempSvar = "";
 
