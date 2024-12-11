@@ -44,7 +44,13 @@ public void setMemberActive(boolean isMemberActive) {
 public boolean isMemberActive() {
         return this.isMemberActive;
 }
-public String toString() {
-   return this.name + " " + this.age + " " + this.membershipFee + " " + this.isMemberActive;
+@Override
+public String toString() { // ændret opsætning for visuel præsentation
+    return "Member{" +
+            "name='" + name + '\'' +
+            ", isMemberActive=" + isMemberActive +
+            ", age=" + age +
+            ", membershipFee=" + membershipFee +
+            '}';
 }
 }
