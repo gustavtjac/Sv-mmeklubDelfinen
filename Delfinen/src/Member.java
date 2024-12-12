@@ -12,9 +12,9 @@ public class Member {
         this.isMemberActive = isMemberActive;
         this.age = age;
         this.membershipFee = calculateMembershipFee();
+        this.inArrears = inArrears;
         MembersList.getMemberList().add(this);
         this.memberID = MembersList.getMemberList().size();
-
     }
     public Member(){
 
@@ -42,6 +42,11 @@ public boolean getInArrears () {
 public double getMembershipFee() {
         return membershipFee;
 }
+public String getIsActiveStringValue () {
+        if (isMemberActive) return "true";
+        else return "false";
+    }
+
 public void setName(String name) {
         this.name = name;
 }
@@ -67,4 +72,7 @@ public boolean isMemberActive() {
 public String toString() { // ændret opsætning for visuel præsentation
     return "Navn: " + this.name + "\nKotigentbeløb: " + this.membershipFee + "\nAktiv?: " + this.isMemberActive + "\nAlder: " + this.age + "\nI Restance: " + this.inArrears + "\nID: " + this.memberID;
 }
+public String writeMemberData () {
+        return name + ";" + getIsActiveStringValue() + ";" + age + ";" + inArrears;
+    }
 }

@@ -31,9 +31,11 @@ public class CreateMember {
 
                 if (swimmerType == 1) {
                     new CompetitiveSwimmer(name, activity, age,false).setSwimmingDisciplines();
+                    FileSaver.saveMemberData();
                     System.out.println("Ny konkurrencesvømmer oprettet");
                 } else if (swimmerType == 2) {
                    new CasualSwimmer(name, activity, age,false);
+                    FileSaver.saveMemberData();
                     System.out.println("Ny motionist oprettet");
                 } else {
                     System.out.println("Ugyldigt valg. Indtast 1 eller 2.");

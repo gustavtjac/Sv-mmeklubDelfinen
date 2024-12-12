@@ -147,9 +147,7 @@ while(running) {
         for (Member m : memberList) {
             if (m instanceof CompetitiveSwimmer) {
                 for (Result result : ((CompetitiveSwimmer) m).getSwimmerResultList()) {
-                    System.out.println("Starter loop for resultater");
                     if (result.getSwimmingDiscipline().equals(swimmingDiscipline) && m.getMembershipFee() == membership.getFee()) {
-                        System.out.println("It works!");
                         tempResultList.add(result);
                     }
                 }

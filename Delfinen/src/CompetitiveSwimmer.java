@@ -5,10 +5,11 @@ public class CompetitiveSwimmer extends Member {
     protected ArrayList<Result> swimmerResultList = new ArrayList<>();
 
 
-    public CompetitiveSwimmer(String name, boolean isMemberActive, int age, ArrayList<SwimmingDisciplines> swimmingDisciplines, boolean inArreas) {
+    public CompetitiveSwimmer(String name, boolean isMemberActive, int age,  boolean inArreas,ArrayList<SwimmingDisciplines> swimmingDisciplines) {
         super(name, isMemberActive, age,inArreas);
         this.membershipFee = calculateMembershipFee();
         this.swimDisciplines = swimmingDisciplines;
+
     }
 
 
@@ -73,7 +74,17 @@ public class CompetitiveSwimmer extends Member {
         public double getMembershipFee() {
         return membershipFee;
     }
+        public String checkForNullSwimmingDiscipline(){
 
+        if(this.swimDisciplines == null){
+                return "";
+            }
+            return this.swimDisciplines.toString();
+}
 
+public String writeMemberData(){
+    return name + ";" + getIsActiveStringValue() + ";" + age + ";" + inArrears + ";" + checkForNullSwimmingDiscipline();
+
+}
     }
 

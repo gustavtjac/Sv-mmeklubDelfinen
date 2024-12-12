@@ -3,7 +3,7 @@ import java.util.Comparator;
 
 public class ResultList {
 
-    protected static ArrayList<Result> resultList = new ArrayList<>();
+    private static ArrayList<Result> resultList = new ArrayList<>();
 
     public static void showTopFiveResults() {
         resultList.sort(Comparator.comparingDouble(Result::getTimeResult)); //Sorterer resultList
@@ -11,6 +11,9 @@ public class ResultList {
             System.out.println(result);
         }
 
+    }
+    public static ArrayList<Result> getResultList() {
+        return resultList;
     }
 }
 

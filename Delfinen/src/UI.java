@@ -4,10 +4,6 @@ import java.util.Scanner;
 
 public class UI { // Hovedmenu med forskellige submenuer, dog med lidt manglende funktionalitet
     public static void main(String[] args) {
-        new CompetitiveSwimmer("Victor",true,28,new ArrayList<SwimmingDisciplines>(),false);
-        new CompetitiveSwimmer("Gustavo",true,12,new ArrayList<SwimmingDisciplines>(),false);
-        new CompetitiveSwimmer("Mads",true,14,new ArrayList<SwimmingDisciplines>(),true);
-
 
         showMenu();
 
@@ -15,6 +11,8 @@ public class UI { // Hovedmenu med forskellige submenuer, dog med lidt manglende
 
     public static void showMenu() {
         Scanner sc = new Scanner(System.in);
+        FileReader.loadMembers();
+        FileReader.loadResults();
         while (true) {
             System.out.println("Hovedmenu:");
             System.out.println("1. Opret medlem");
@@ -181,7 +179,8 @@ while(running) {
                 System.out.println("Forkert input. vælg et tal fra listen!");
             }
             SwimmingDisciplines selectedDiscipline = SwimmingDisciplines.values()[index - 1];
-            new TrainingResult(date, timeResult, swimmerID, swimmingDiscipline);
+            new TrainingResult(date, timeResult, swimmerID, selectedDiscipline);
+            FileSaver.saveResultData();
             System.out.println("Nyt resultat oprettet");
         } catch (Exception e) {
             System.out.println("Forkert input");
@@ -235,6 +234,7 @@ while(running) {
 
                 if (selectedDiscipline != null) {
                     new CompetitionResult(date, timeResult, swimmerID, selectedDiscipline, tournamentName, tournamentPlacement);
+                    FileSaver.saveResultData();
                     System.out.println("Nyt resultat oprettet");
                     break;
                 } else {

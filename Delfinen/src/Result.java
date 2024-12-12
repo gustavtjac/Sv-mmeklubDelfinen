@@ -8,7 +8,7 @@ public class Result {
         this.timeResult = timeResult;
         this.swimmerID = swimmerID;
         this.swimmingDiscipline = swimmingDiscipline;
-        ResultList.resultList.add(this);
+        ResultList.getResultList().add(this);
         MembersList.matchIDFromResult(this).getSwimmerResultList().add(this);
     }
 
@@ -25,7 +25,9 @@ public class Result {
 
     public String toString () {
         return "------------------"+"\nDate: " + date + "\nResult: " + timeResult + "\nSwimmerID: " + swimmerID + "\nDiscipline: " + swimmingDiscipline + "\n------------------";
-
+    }
+    public String writeResultData () {
+        return date + ";" + timeResult + ";" + swimmerID + ";" + swimmingDiscipline.toString();
     }
 
 
