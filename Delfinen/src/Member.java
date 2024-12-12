@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 public class Member {
     protected int memberID;
     protected double membershipFee;
@@ -5,12 +6,15 @@ public class Member {
     protected boolean isMemberActive;
     protected boolean inArrears = false;
     protected int age;
+
     public Member(String name, boolean isMemberActive,int age) {
-        // this.memberID; //Lav dette tiil Memberliste+1
         this.name = name;
         this.isMemberActive = isMemberActive;
         this.age = age;
         this.membershipFee = calculateMembershipFee();
+        MembersList.getMemberList().add(this);
+        this.memberID = MembersList.getMemberList().size();
+
     }
     public Member(){
 
@@ -41,6 +45,9 @@ public void setName(String name) {
 public String getName() {
         return this.name;
 }
+public int getMemberID() {
+        return memberID;
+}
 public void setMemberActive(boolean isMemberActive) {
         this.isMemberActive = isMemberActive;
 }
@@ -49,11 +56,6 @@ public boolean isMemberActive() {
 }
 @Override
 public String toString() { // ændret opsætning for visuel præsentation
-    return "Member{" +
-            "name='" + name + '\'' +
-            ", isMemberActive=" + isMemberActive +
-            ", age=" + age +
-            ", membershipFee=" + membershipFee +
-            '}';
+    return "Navn: " + this.name + "\nKotigentbeløb: " + this.membershipFee + "\nAktiv?: " + this.isMemberActive + "\nAlder: " + this.age + "\nI Restance: " + this.inArrears + "\n ID: " + this.memberID;
 }
 }

@@ -1,4 +1,6 @@
+import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class MembersList {
@@ -8,9 +10,9 @@ public class MembersList {
     public static ArrayList<Member> getMemberList() {
         return memberList;
     }
-public static void displaySpecficCasualSwimmer(MembershipFees membershipFees) {
-    for (Member m : memberList) {
-        if (m.getClass() == CasualSwimmer.class && m.getMembershipFee() == membershipFees.getFee()) {
+    public static void displaySpecficCasualSwimmer(MembershipFees membershipFees) {
+        for (Member m : memberList) {
+            if (m.getClass() == CasualSwimmer.class && m.getMembershipFee() == membershipFees.getFee()) {
             System.out.println(m);
         }
     }
@@ -35,7 +37,7 @@ public static void displayMembersOnCategory(Class s){
     }
 }
 
-public static void displayCasualSwimmers(){
+    public static void displayCasualSwimmers(){
 Scanner sc = new Scanner(System.in);
 boolean running = true;
 while(running) {
@@ -125,5 +127,36 @@ while(running) {
                   break;
         }
     }
+
+    public static CompetitiveSwimmer matchIDFromResult(Result result) {
+        CompetitiveSwimmer nullM = null;
+        for (Member m : memberList) {
+            if (m instanceof CompetitiveSwimmer) {
+                // This ensures that m is a CompetitiveSwimmer or a subclass of it
+                CompetitiveSwimmer swimmer = (CompetitiveSwimmer) m;  // Cast to CompetitiveSwimmer
+                if (result.getSwimmerID() == m.getMemberID()) {
+                    return swimmer;  // Return the CompetitiveSwimmer if IDs match
+                }
+            }
+        }
+        return null;  // Return null if no match found
+    }
+
+    public static ArrayList<Result> sortedResultList (MembershipFees membership, SwimmingDisciplines swimmingDiscipline) {
+        ArrayList<Result> tempResultList = new ArrayList<>();
+        for (Member m : memberList) {
+            if (m instanceof CompetitiveSwimmer) {
+                for (Result result : ((CompetitiveSwimmer) m).getSwimmerResultList()) {
+                    if (result.getSwimmingDiscipline() == swimmingDiscipline && m.getMembershipFee() == membership.getFee()) {
+                        System.out.println("It works!");
+                        tempResultList.add(result);
+                    }
+                }
+            }
+        }
+        tempResultList.sort(Comparator.comparingDouble(Result::getTimeResult));
+        return tempResultList;
+    }
+
 
 }
