@@ -1,10 +1,10 @@
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Scanner;
 
 public class MembersList {
     private static ArrayList<Member> memberList = new ArrayList<>();
+
 
 
     public static ArrayList<Member> getMemberList() {
@@ -24,12 +24,12 @@ public class MembersList {
             }
         }
     }
-public static void displayAllMembers(){
+    public static void displayAllMembers(){
     for (Member m : memberList) {
             System.out.println(m);
     }
 }
-public static void displayMembersOnCategory(Class s){
+    public static void displayMembersOnCategory(Class s){
     for (Member m : memberList) {
         if (m.getClass() == s) {
             System.out.println(m);
@@ -147,7 +147,8 @@ while(running) {
         for (Member m : memberList) {
             if (m instanceof CompetitiveSwimmer) {
                 for (Result result : ((CompetitiveSwimmer) m).getSwimmerResultList()) {
-                    if (result.getSwimmingDiscipline() == swimmingDiscipline && m.getMembershipFee() == membership.getFee()) {
+                    System.out.println("Starter loop for resultater");
+                    if (result.getSwimmingDiscipline().equals(swimmingDiscipline) && m.getMembershipFee() == membership.getFee()) {
                         System.out.println("It works!");
                         tempResultList.add(result);
                     }
@@ -156,6 +157,23 @@ while(running) {
         }
         tempResultList.sort(Comparator.comparingDouble(Result::getTimeResult));
         return tempResultList;
+    }
+    public static double calculateTotalMembershipFees () {
+        double totalMembersFees = 0;
+        for (Member m : memberList) {
+            totalMembersFees += m.getMembershipFee();
+        }
+        return totalMembersFees;
+    }
+
+    public static ArrayList<Member> showMembersInArrears() {
+        ArrayList<Member> tempList = new ArrayList<>();
+        for (Member m : memberList) {
+            if (m.getInArrears()) {
+                tempList.add(m);
+            }
+        }
+        return tempList;
     }
 
 

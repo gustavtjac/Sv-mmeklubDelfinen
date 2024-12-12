@@ -5,15 +5,15 @@ public class CompetitiveSwimmer extends Member {
     protected ArrayList<Result> swimmerResultList = new ArrayList<>();
 
 
-    public CompetitiveSwimmer(String name, boolean isMemberActive, int age, ArrayList<SwimmingDisciplines> swimmingDisciplines) {
-        super(name, isMemberActive, age);
+    public CompetitiveSwimmer(String name, boolean isMemberActive, int age, ArrayList<SwimmingDisciplines> swimmingDisciplines, boolean inArreas) {
+        super(name, isMemberActive, age,inArreas);
         this.membershipFee = calculateMembershipFee();
-        this.inArrears = false;
         this.swimDisciplines = swimmingDisciplines;
     }
 
-    public CompetitiveSwimmer(String name, boolean isMemberActive, int age) {
-        super(name, isMemberActive, age);
+
+    public CompetitiveSwimmer(String name, boolean isMemberActive, int age, boolean inArreas) {
+        super(name, isMemberActive, age, inArreas);
         this.membershipFee = calculateMembershipFee(); //Kalder metode der beregner kontingent
         this.inArrears = false;
     }
@@ -26,7 +26,7 @@ public class CompetitiveSwimmer extends Member {
     }
 
     public String toString() { // ændret i opsætningen for den visuelle præsentation
-        return "Navn: " + this.name + "\nKotigentbeløb: " + this.membershipFee + "\nAktiv?: " + this.isMemberActive + "\nAlder: " + this.age + "\nI Restance: " + this.inArrears + "\nDiscipliner: " + this.swimDisciplines.toString() + "\n ID: " + this.memberID + "\nResultater:\n" + swimmerResultList;
+        return "Navn: " + this.name + "\nKotigentbeløb: " + this.membershipFee + "\nAktiv?: " + this.isMemberActive + "\nAlder: " + this.age + "\nI Restance: " + this.inArrears + "\nDiscipliner: " + this.swimDisciplines.toString() + "\nID: " + this.memberID + "\nResultater:\n" + swimmerResultList;
     }
         public void setSwimmingDisciplines() {
             Scanner sc = new Scanner(System.in);

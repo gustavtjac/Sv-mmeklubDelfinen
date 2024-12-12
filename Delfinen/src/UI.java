@@ -1,13 +1,19 @@
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UI { // Hovedmenu med forskellige submenuer, dog med lidt manglende funktionalitet
     public static void main(String[] args) {
-        UI menu = new UI();
-        menu.showMenu();
+        new CompetitiveSwimmer("Victor",true,28,new ArrayList<SwimmingDisciplines>(),false);
+        new CompetitiveSwimmer("Gustavo",true,12,new ArrayList<SwimmingDisciplines>(),false);
+        new CompetitiveSwimmer("Mads",true,14,new ArrayList<SwimmingDisciplines>(),true);
+
+
+        showMenu();
+
     }
 
-    public void showMenu() {
+    public static void showMenu() {
         Scanner sc = new Scanner(System.in);
         while (true) {
             System.out.println("Hovedmenu:");
@@ -17,34 +23,34 @@ public class UI { // Hovedmenu med forskellige submenuer, dog med lidt manglende
             System.out.println("4. Vis top 5 konkurrence resultater");
             System.out.println("5. Vis kontingentinformation");
             System.out.println("6. Luk program");
+            System.out.println("-------------------------------------------");
 
 
-            int choice = sc.nextInt();
-            sc.nextLine(); // Consume newline
+            String choice = sc.nextLine();
 
             switch (choice) {
-                case 1:
+                case "1":
                     CreateMember.createNewMember();
                     break;
-                case 2:
+                case "2":
                     CreateNewResultUI();
                     break;
-                case 3:
+                case "3":
                     MembersList.displayMembers();
                     break;
-                case 4:
+                case "4":
                     chooseFour();
-                    /*ResultList.showTopFiveResults();*/
                     break;
-                case 5:
-                    // Lav vis kontingentinformation funktionalitet
+                case "5":
+                    chooseFive();
                     break;
-                case 6:
+                case "6":
                     System.out.println("Lukker programmet...");
                     sc.close();
-                    return;
+                    break;
                 default:
                     System.out.println("Ugyldigt valg. Prøv igen.");
+                    break;
             }
         }
     }
@@ -95,6 +101,37 @@ public class UI { // Hovedmenu med forskellige submenuer, dog med lidt manglende
             }
         }
 
+
+    public static void chooseFive() {
+        Scanner sc = new Scanner(System.in);
+        while (true) {
+            System.out.println("""
+                    1. Vis total kontingentinformation
+                    2. Vis medlemmer i restance""");
+            String choice = sc.nextLine();
+
+            if (choice.equalsIgnoreCase("1")) {
+                System.out.println("Forventede kontigent for i år:\n" + MembersList.calculateTotalMembershipFees()+"\n----------------");
+                break;
+
+            } else if (choice.equalsIgnoreCase("2")) {
+                if (MembersList.showMembersInArrears().isEmpty()) {
+                    System.out.println("Ingen medlemmer i restance"+"\n----------------");
+                    break;
+                } else {
+                    System.out.println("Alle medlemmer i restance:");
+                    for (Member m : MembersList.showMembersInArrears()) {
+                        System.out.println(m);
+                        System.out.println("---------------------");
+                    }
+                    break;
+                }
+
+            } else {
+                System.out.println("Forkert input");
+            }
+        }
+    }
     public static void CreateNewResultUI(){
         boolean running = true;
         Scanner sc = new Scanner(System.in);
@@ -153,45 +190,66 @@ while(running) {
 
     public static void createCompetitionResult() {
         Scanner sc = new Scanner(System.in);
-        int swimmerID; //evt. -1
-        String date;
-        double timeResult;
-        String tournamentName;
-        int tournamentPlacement;
-        SwimmingDisciplines swimmingDiscipline = null;
-        System.out.println("-------------------------------");
-        try {
-            System.out.println("Indtast svømmerens ID");
-            swimmerID = Integer.parseInt(sc.nextLine());
+        int swimmerID = -1;
+        String date = "";
+        double timeResult = -1.0;
+        String tournamentName = "";
+        int tournamentPlacement = -1;
+        SwimmingDisciplines selectedDiscipline = null;
 
-            System.out.println("Indtast stævnets navn");
-            tournamentName = sc.nextLine();
+        while (true) {
+            try {
 
-            System.out.println("Indtast dato DD/MM/YY");
-            date = sc.nextLine();
+                System.out.println("-------------------------------");
+                System.out.println("Indtast svømmerens ID");
+                swimmerID = Integer.parseInt(sc.nextLine());
 
-            System.out.println("Indtast svømmerens tid i sekunder [XX.XX]");
-            timeResult = Double.parseDouble(sc.nextLine());
 
-            System.out.println("Indtast svømmerens placering i stævnet");
-            tournamentPlacement = Integer.parseInt(sc.nextLine());
+                System.out.println("Indtast stævnets navn");
+                tournamentName = sc.nextLine();
 
-            System.out.println("---------------------------------------");
-            System.out.println("Vælg svømmedisciplin:");
-            for (SwimmingDisciplines sd : SwimmingDisciplines.values()) {
-                System.out.println(sd.ordinal() + 1 + ": " + sd); //ordinal = indeks af enum
+
+                System.out.println("Indtast dato DD/MM/YY");
+                date = sc.nextLine();
+
+
+                System.out.println("Indtast svømmerens tid i sekunder [XX.XX]");
+                timeResult = Double.parseDouble(sc.nextLine());
+
+
+                System.out.println("Indtast svømmerens placering i stævnet");
+                tournamentPlacement = Integer.parseInt(sc.nextLine());
+
+
+                System.out.println("---------------------------------------");
+                System.out.println("Vælg svømmedisciplin:");
+                for (SwimmingDisciplines sd : SwimmingDisciplines.values()) {
+                    System.out.println(sd.ordinal() + 1 + ": " + sd); // ordinal = index of enum
+                }
+                int index = Integer.parseInt(sc.nextLine());
+                if (index < 1 || index > SwimmingDisciplines.values().length) {
+                    System.out.println("Forkert input. Vælg et tal fra listen!");
+                }
+                selectedDiscipline = SwimmingDisciplines.values()[index - 1];
+
+
+                if (selectedDiscipline != null) {
+                    new CompetitionResult(date, timeResult, swimmerID, selectedDiscipline, tournamentName, tournamentPlacement);
+                    System.out.println("Nyt resultat oprettet");
+                    break;
+                } else {
+                    System.out.println("No discipline selected. Try again.");
+                    continue;
+                }
+
+            } catch (NumberFormatException e) {
+                System.out.println("Forkert input. Sørg for at indtaste et gyldigt tal.");
+            } catch (Exception e) {
+                System.out.println("Forkert input. Der opstod en fejl.");
+                e.printStackTrace();
             }
-            int index = Integer.parseInt(sc.nextLine());
-            if (index < 1 || index > SwimmingDisciplines.values().length) {
-                System.out.println("Forkert input. vælg et tal fra listen!");
-            }
-            SwimmingDisciplines selectedDiscipline = SwimmingDisciplines.values()[index - 1];
-            new CompetitionResult(tournamentName, date, timeResult, tournamentPlacement, selectedDiscipline, swimmerID);
-            System.out.println("Nyt resultat oprettet");
-        } catch (Exception e) {
-            System.out.println("Forkert input");
-            e.printStackTrace();
         }
     }
+
 }
 

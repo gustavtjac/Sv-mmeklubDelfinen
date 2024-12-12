@@ -30,15 +30,13 @@ public class CreateMember {
                 int swimmerType = Integer.parseInt(sc.nextLine());
 
                 if (swimmerType == 1) {
-                    CompetitiveSwimmer victor = new CompetitiveSwimmer(name, activity, age);
-                    victor.setSwimmingDisciplines();
-                    System.out.println(victor); // FJERN NÅR VI HAR LAVET LISTEN
+                    new CompetitiveSwimmer(name, activity, age,false).setSwimmingDisciplines();
+                    System.out.println("Ny konkurrencesvømmer oprettet");
                 } else if (swimmerType == 2) {
-                    CasualSwimmer victor = new CasualSwimmer(name, activity, age);
-                    System.out.println(victor); // FJERN NÅR VI HAR LAVET LISTEN
+                   new CasualSwimmer(name, activity, age,false);
+                    System.out.println("Ny motionist oprettet");
                 } else {
                     System.out.println("Ugyldigt valg. Indtast 1 eller 2.");
-                    continue;
                 }
                 break;
             } catch (NumberFormatException e) {

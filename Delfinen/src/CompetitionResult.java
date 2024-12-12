@@ -1,23 +1,17 @@
-public class CompetitionResult extends Result{
-    private String tournamentName;
-    private int tournamentPlacement;
-    private SwimmingDisciplines swimmingDiscipline;
+public class CompetitionResult extends Result {
+    protected String tournamentName;
+    protected int tournamentPlacement;
 
-    CompetitionResult(String tournamentName,String date, double timeResult,int tournamentPlacement, SwimmingDisciplines swimmingDiscipline, int swimmerID) {
-    super(date, timeResult, swimmerID, swimmingDiscipline);
-        this.tournamentName = tournamentName;
+    public CompetitionResult(String date, double timeResult, int swimmerID, SwimmingDisciplines swimmingDiscipline, String tournamentName, int tournamentPlacement) {
+        super(date, timeResult, swimmerID, swimmingDiscipline);
         this.tournamentPlacement = tournamentPlacement;
-         //Tilføjer nyoprettet resultat til resultList
-    }
-    public SwimmingDisciplines getSwimmingDiscipline() {
-        return swimmingDiscipline;
+        this.tournamentName = tournamentName;
     }
 
-    public double getTimeResult() {
-        return timeResult;
-    }
 
     public String toString() {
-        return "Svømmer ID: " + swimmerID +". Tid: "+ timeResult;
+        return "------------------\n"+ "Tournament name: " + tournamentName + "\nPlacement: "
+                + tournamentPlacement + "\nDate: " + date + "\nResult: "
+                + timeResult + "\nSwimmerID: " + swimmerID + "\nDiscipline: " + swimmingDiscipline + "\n------------------";
     }
 }

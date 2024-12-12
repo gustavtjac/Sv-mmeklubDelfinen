@@ -7,7 +7,7 @@ public class Member {
     protected boolean inArrears = false;
     protected int age;
 
-    public Member(String name, boolean isMemberActive,int age) {
+    public Member(String name, boolean isMemberActive,int age, boolean inArrears) {
         this.name = name;
         this.isMemberActive = isMemberActive;
         this.age = age;
@@ -36,12 +36,21 @@ public void setAge(int age) {
 public int getAge() {
         return this.age;
 }
+public boolean getInArrears () {
+        return inArrears;
+}
 public double getMembershipFee() {
         return membershipFee;
 }
 public void setName(String name) {
         this.name = name;
 }
+public void setInArrears(boolean inArrears) {
+        this.inArrears = inArrears;
+    }
+
+
+
 public String getName() {
         return this.name;
 }
@@ -56,6 +65,6 @@ public boolean isMemberActive() {
 }
 @Override
 public String toString() { // ændret opsætning for visuel præsentation
-    return "Navn: " + this.name + "\nKotigentbeløb: " + this.membershipFee + "\nAktiv?: " + this.isMemberActive + "\nAlder: " + this.age + "\nI Restance: " + this.inArrears + "\n ID: " + this.memberID;
+    return "Navn: " + this.name + "\nKotigentbeløb: " + this.membershipFee + "\nAktiv?: " + this.isMemberActive + "\nAlder: " + this.age + "\nI Restance: " + this.inArrears + "\nID: " + this.memberID;
 }
 }

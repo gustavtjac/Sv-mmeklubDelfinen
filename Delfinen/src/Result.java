@@ -16,7 +16,7 @@ public class Result {
         return timeResult;
     }
     public SwimmingDisciplines getSwimmingDiscipline () {
-        return this.swimmingDiscipline;
+        return swimmingDiscipline;
     }
 
     public int getSwimmerID () {
@@ -24,7 +24,7 @@ public class Result {
     }
 
     public String toString () {
-        return "Result: " + timeResult;
+        return "------------------"+"\nDate: " + date + "\nResult: " + timeResult + "\nSwimmerID: " + swimmerID + "\nDiscipline: " + swimmingDiscipline + "\n------------------";
 
     }
 
