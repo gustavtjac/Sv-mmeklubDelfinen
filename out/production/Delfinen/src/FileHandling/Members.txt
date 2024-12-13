@@ -5,3 +5,4 @@ GamerSofiie;true;29;false;[CRAWL, BRYSTSVØMNING, BUTTERFLY, RYGCRAWL, HUNDESVØ
 Tut;true;9;false;[HUNDESVØMNING]
 Cay;true;53;true;[HUNDESVØMNING]
 Simon;true;28;false;[BUTTERFLY, CRAWL, BRYSTSVØMNING]
+Alfredo;true;6;false;[HUNDESVØMNING]

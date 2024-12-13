@@ -30,19 +30,19 @@ public class UI { // Hovedmenu med forskellige submenuer, dog med lidt manglende
 
             switch (choice) {
                 case "1":
-                    CreateMember.createNewMember();
+                    gatherNewMemberInfo();
                     break;
                 case "2":
-                    CreateNewResultUI();
+                    CreateNewResult();
                     break;
                 case "3":
                     MembersList.displayMembers();
                     break;
                 case "4":
-                    chooseFour();
+                    showTopFiveResults();
                     break;
                 case "5":
-                    chooseFive();
+                    showMemberFeeInfo();
                     break;
                 case "6":
                     System.out.println("Lukker programmet...");
@@ -55,7 +55,7 @@ public class UI { // Hovedmenu med forskellige submenuer, dog med lidt manglende
         }
     }
 
-    public static void chooseFour() {
+    public static void showTopFiveResults() {
         Scanner sc = new Scanner(System.in);
         SwimmingDisciplines selectedDiscipline = null;
         MembershipFees selectedMembership = null;
@@ -102,7 +102,7 @@ public class UI { // Hovedmenu med forskellige submenuer, dog med lidt manglende
         }
 
 
-    public static void chooseFive() {
+    public static void showMemberFeeInfo() {
         Scanner sc = new Scanner(System.in);
         while (true) {
             System.out.println("""
@@ -132,7 +132,7 @@ public class UI { // Hovedmenu med forskellige submenuer, dog med lidt manglende
             }
         }
     }
-    public static void CreateNewResultUI(){
+    public static void CreateNewResult(){
         boolean running = true;
         Scanner sc = new Scanner(System.in);
 
@@ -254,6 +254,38 @@ while(running) {
                 System.out.println("Forkert input. Der opstod en fejl.");
                 e.printStackTrace();
             }
+        }
+    }
+    public static void gatherNewMemberInfo() {
+        String name;
+        boolean activity = false;
+        int age;
+        Scanner sc = new Scanner(System.in);
+        while (true) {
+            try {
+                System.out.println("Indtast navn:");
+                name = sc.nextLine();
+
+                System.out.println("Indtast alder:");
+                age = Integer.parseInt(sc.nextLine());
+
+                if (age < 0) {
+                    System.out.println("Alder kan ikke være negativ. Prøv igen.");
+                }
+
+                System.out.println("Er medlemmet aktiv? (true/false):");
+                activity = Boolean.parseBoolean(sc.nextLine());
+
+                System.out.println("Er det en konkurrence eller motionssvømmer? (1 for konkurrence, 2 for motionist):");
+                int swimmerType = Integer.parseInt(sc.nextLine());
+                CreateMember.createNewMember(name, activity, age, swimmerType);
+                break;
+            }
+         catch (NumberFormatException e) {
+            System.out.println("Ugyldigt input. Sørg for at indtaste et gyldigt tal.");
+        } catch (Exception e) {
+            System.out.println("Der opstod en fejl. Prøv igen.");
+        }
         }
     }
 

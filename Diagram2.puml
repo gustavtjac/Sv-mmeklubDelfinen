@@ -1,0 +1,138 @@
+@startuml
+class CompetitionResult {
+- String tournamentName
+- int tournamentPlacement
++ String checkForNullSwimmingDiscipline()
++ String toString()
++ String writeResultData()
+}
+
+
+class CasualSwimmer {
+}
+class FileReader {
++ {static} void loadMembers()
++ {static} void loadResults()
+}
+
+class ResultList {
+- {static} ArrayList<Result> resultList
++ {static} void showTopFiveResults()
++ {static} ArrayList<Result> getResultList()
+}
+
+
+class Main {
++ {static} void main(String[])
+}
+
+class FileSaver {
++ {static} void saveMemberData()
++ {static} void saveResultData()
+}
+
+enum SwimmingDisciplines {
++  CRAWL
++  BRYSTSVØMNING
++  BUTTERFLY
++  RYGCRAWL
++  HUNDESVØMNING
++  UDSPRING
+}
+
+class Member {
+# int memberID
+# double membershipFee
+- String name
+- boolean isMemberActive
+- boolean inArrears
+- int age
++ double calculateMembershipFee()
++ int getAge()
++ boolean getInArrears()
++ double getMembershipFee()
++ String getIsActiveStringValue()
++ void setInArrears(boolean)
++ String getName()
++ int getMemberID()
++ boolean isMemberActive()
++ String toString()
++ String writeMemberData()
+}
+
+
+class Result {
+- String date
+- double timeResult
+- int swimmerID
+- SwimmingDisciplines swimmingDiscipline
++ double getTimeResult()
++ SwimmingDisciplines getSwimmingDiscipline()
++ int getSwimmerID()
++ String toString()
++ String writeResultData()
++ String getDate()
+}
+
+
+class TrainingResult {
+}
+class CreateMember {
++ {static} void createNewMember()
+}
+
+class MembersList {
+- {static} ArrayList<Member> memberList
++ {static} ArrayList<Member> getMemberList()
++ {static} void displaySpecficCasualSwimmer(MembershipFees)
++ {static} void displaySpecficCompetitivelSwimmer(MembershipFees)
++ {static} void displayAllMembers()
++ {static} void displayMembersOnCategory(Class)
++ {static} void displayCasualSwimmers()
++ {static} void displayCompetitiveSwimmers()
++ {static} void displayMembers()
++ {static} CompetitiveSwimmer matchIDFromResult(Result)
++ {static} ArrayList<Result> sortedResultList(MembershipFees,SwimmingDisciplines)
++ {static} double calculateTotalMembershipFees()
++ {static} ArrayList<Member> showMembersInArrears()
+}
+
+
+enum MembershipFees {
++  JUNIOR
++  SENIOR
++  RETIREE
++  PASSIVE
+- double fee
++ double getFee()
+}
+
+
+class UI {
++ {static} void showMenu()
++ {static} void showTopFiveResults()
++ {static} void showMemberFeeInfo()
++ {static} void CreateNewResult()
++ {static} void createTrainingResult()
++ {static} void createCompetitionResult()
+}
+
+class CompetitiveSwimmer {
+- ArrayList<SwimmingDisciplines> swimDisciplines
+- ArrayList<Result> swimmerResultList
++ String toString()
++ void setSwimmingDisciplines()
++ ArrayList<Result> getSwimmerResultList()
++ double getMembershipFee()
++ String checkForNullSwimmingDiscipline()
++ String writeMemberData()
+}
+
+
+
+
+Result <|-- CompetitionResult
+Member <|-- CasualSwimmer
+Result <|-- TrainingResult
+Member <|-- CompetitiveSwimmer
+@enduml
