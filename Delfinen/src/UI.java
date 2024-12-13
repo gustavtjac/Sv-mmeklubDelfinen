@@ -3,11 +3,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UI { // Hovedmenu med forskellige submenuer, dog med lidt manglende funktionalitet
-    public static void main(String[] args) {
-
-        showMenu();
-
-    }
 
     public static void showMenu() {
         Scanner sc = new Scanner(System.in);
@@ -44,7 +39,7 @@ public class UI { // Hovedmenu med forskellige submenuer, dog med lidt manglende
                     break;
                 case "6":
                     System.out.println("Lukker programmet...");
-                    sc.close();
+                    System.exit(0);
                     break;
                 default:
                     System.out.println("Ugyldigt valg. Prøv igen.");
