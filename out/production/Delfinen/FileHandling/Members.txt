@@ -1,0 +1,5 @@
+Victor;true;28;false;[CRAWL, BUTTERFLY, BRYSTSVØMNING]
+GustavoGamer;true;13;false;[CRAWL, BRYSTSVØMNING, BUTTERFLY]
+McMad;true;28;false
+GamerSofiie;true;29;false;[CRAWL, BRYSTSVØMNING, BUTTERFLY, RYGCRAWL, HUNDESVØMNING, UDSPRING]
+Tut;true;9;false;[HUNDESVØMNING]
