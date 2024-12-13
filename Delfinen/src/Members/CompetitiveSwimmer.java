@@ -12,6 +12,7 @@ public class CompetitiveSwimmer extends Member {
     private ArrayList<Result> swimmerResultList = new ArrayList<>();
 
 
+
     public CompetitiveSwimmer(String name, boolean isMemberActive, int age,  boolean inArreas,ArrayList<SwimmingDisciplines> swimmingDisciplines) {
         super(name, isMemberActive, age,inArreas);
         this.membershipFee = calculateMembershipFee();
@@ -19,11 +20,10 @@ public class CompetitiveSwimmer extends Member {
 
     }
 
-
+//Skal benyttes når vi opretter nyt konkurrencemedlem igennem UI
     public CompetitiveSwimmer(String name, boolean isMemberActive, int age, boolean inArreas) {
         super(name, isMemberActive, age, inArreas);
         this.membershipFee = calculateMembershipFee(); //Kalder metode der beregner kontingent
-        this.inArrears = false;
     }
 
     public CompetitiveSwimmer() {
@@ -34,7 +34,7 @@ public class CompetitiveSwimmer extends Member {
     }
 
     public String toString() { // ændret i opsætningen for den visuelle præsentation
-        return "Navn: " + this.name + "\nKotigentbeløb: " + this.membershipFee + "\nAktiv?: " + this.isMemberActive + "\nAlder: " + this.age + "\nI Restance: " + this.inArrears + "\nDiscipliner: " + this.swimDisciplines.toString() + "\nID: " + this.memberID + "\nResultater:\n" + swimmerResultList;
+        return "Navn: " + this.getName() + "\nKotigentbeløb: " + this.membershipFee + "\nAktiv?: " + this.isMemberActive() + "\nAlder: " + this.getAge() + "\nI Restance: " + this.getInArrears() + "\nDiscipliner: " + this.swimDisciplines.toString() + "\nID: " + this.memberID + "\nResultater:\n" + swimmerResultList;
     }
         public void setSwimmingDisciplines() {
             Scanner sc = new Scanner(System.in);
@@ -90,7 +90,7 @@ public class CompetitiveSwimmer extends Member {
 }
 
 public String writeMemberData(){
-    return name + ";" + getIsActiveStringValue() + ";" + age + ";" + inArrears + ";" + checkForNullSwimmingDiscipline();
+    return this.getName() + ";" + getIsActiveStringValue() + ";" + this.getAge() + ";" + this.getInArrears()+ ";" + checkForNullSwimmingDiscipline();
 
 }
     }

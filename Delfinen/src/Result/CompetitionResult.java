@@ -13,21 +13,21 @@ public class CompetitionResult extends Result {
         this.tournamentName = tournamentName;
     }
     public String checkForNullSwimmingDiscipline(){
-        if(this.swimmingDiscipline == null){
+        if(this.getSwimmingDiscipline() == null){
             return "";
         }
         else{
-            return this.swimmingDiscipline.toString();
+            return this.getSwimmingDiscipline().toString();
         }
 
     }
 
     public String toString() {
         return "------------------\n"+ "Tournament name: " + tournamentName + "\nPlacement: "
-                + tournamentPlacement + "\nDate: " + date + "\nResult.Result: "
-                + timeResult + "\nSwimmerID: " + swimmerID + "\nDiscipline: " + swimmingDiscipline + "\n------------------";
+                + tournamentPlacement + "\nDate: " + this.getDate() + "\nResult.Result: "
+                + this.getTimeResult() + "\nSwimmerID: " + this.getSwimmerID() + "\nDiscipline: " + this.getSwimmingDiscipline() + "\n------------------";
     }
     public String writeResultData () {
-        return date + ";" + timeResult + ";" + swimmerID + ";" + checkForNullSwimmingDiscipline() + ";" + tournamentName + ";" + tournamentPlacement;
+        return this.getDate() + ";" + this.getTimeResult() + ";" + this.getSwimmerID() + ";" + checkForNullSwimmingDiscipline() + ";" + tournamentName + ";" + tournamentPlacement;
     }
 }

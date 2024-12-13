@@ -4,10 +4,10 @@ import Enums.*;
 public class Member {
     protected int memberID;
     protected double membershipFee;
-    protected String name;
-    protected boolean isMemberActive;
-    protected boolean inArrears = false;
-    protected int age;
+    private String name;
+    private boolean isMemberActive;
+    private boolean inArrears;
+    private int age;
 
     public Member(String name, boolean isMemberActive,int age, boolean inArrears) {
         this.name = name;

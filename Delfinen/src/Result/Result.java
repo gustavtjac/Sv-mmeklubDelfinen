@@ -5,10 +5,10 @@ import Members.*;
 
 
 public class Result {
-    protected String date;
-    protected double timeResult;
-    protected int swimmerID;
-    protected SwimmingDisciplines swimmingDiscipline;
+    private String date;
+    private double timeResult;
+    private int swimmerID;
+    private SwimmingDisciplines swimmingDiscipline;
     public Result(String date,double timeResult,int swimmerID, SwimmingDisciplines swimmingDiscipline){
         this.date = date;
         this.timeResult = timeResult;
@@ -34,6 +34,9 @@ public class Result {
     }
     public String writeResultData () {
         return date + ";" + timeResult + ";" + swimmerID + ";" + swimmingDiscipline.toString();
+    }
+    public String getDate () {
+        return date;
     }
 
 
