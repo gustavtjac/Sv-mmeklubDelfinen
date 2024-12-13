@@ -32,9 +32,6 @@ public double calculateMembershipFee() { //Metode til at beregne kontingent
             return MembershipFees.RETIREE.getFee();
         }
 }
-public void setAge(int age) {
-        this.age = age;
-}
 public int getAge() {
         return this.age;
 }
@@ -49,9 +46,6 @@ public String getIsActiveStringValue () {
         else return "false";
     }
 
-public void setName(String name) {
-        this.name = name;
-}
 public void setInArrears(boolean inArrears) {
         this.inArrears = inArrears;
     }
@@ -63,9 +57,6 @@ public String getName() {
 }
 public int getMemberID() {
         return memberID;
-}
-public void setMemberActive(boolean isMemberActive) {
-        this.isMemberActive = isMemberActive;
 }
 public boolean isMemberActive() {
         return this.isMemberActive;

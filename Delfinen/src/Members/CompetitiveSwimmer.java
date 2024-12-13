@@ -26,13 +26,6 @@ public class CompetitiveSwimmer extends Member {
         this.membershipFee = calculateMembershipFee(); //Kalder metode der beregner kontingent
     }
 
-    public CompetitiveSwimmer() {
-    }
-
-    public void setSwimDisciplines(ArrayList<SwimmingDisciplines> swimDisciplines) {
-        this.swimDisciplines = swimDisciplines; //Setter konkurrencesvømmerens disciplin
-    }
-
     public String toString() { // ændret i opsætningen for den visuelle præsentation
         return "Navn: " + this.getName() + "\nKotigentbeløb: " + this.membershipFee + "\nAktiv?: " + this.isMemberActive() + "\nAlder: " + this.getAge() + "\nI Restance: " + this.getInArrears() + "\nDiscipliner: " + this.swimDisciplines.toString() + "\nID: " + this.memberID + "\nResultater:\n" + swimmerResultList;
     }
