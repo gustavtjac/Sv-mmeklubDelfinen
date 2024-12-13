@@ -122,7 +122,7 @@ public class UI { // Hovedmenu med forskellige submenuer, dog med lidt manglende
                     System.out.println("Alle medlemmer i restance:");
                     for (Member m : MembersList.showMembersInArrears()) {
                         System.out.println(m);
-                        System.out.println("---------------------");
+                        System.out.println("-------------------------------------------");
                     }
                     break;
                 }
@@ -159,33 +159,37 @@ while(running) {
         String date;
         double timeResult;
         SwimmingDisciplines swimmingDiscipline = null;
-        System.out.println("-------------------------------");
-        try {
-            System.out.println("Indtast svømmerens ID");
-            swimmerID = Integer.parseInt(sc.nextLine());
+        while (true) {
+            System.out.println("-------------------------------------------");
+            try {
+                System.out.println("Indtast svømmerens ID");
+                swimmerID = Integer.parseInt(sc.nextLine());
 
-            System.out.println("Indtast dato DD/MM/YY");
-            date = sc.nextLine();
+                System.out.println("Indtast dato DD/MM/YY");
+                date = sc.nextLine();
 
-            System.out.println("Indtast svømmerens tid i sekunder [XX.XX]");
-            timeResult = Double.parseDouble(sc.nextLine());
+                System.out.println("Indtast svømmerens tid i sekunder [XX.XX]");
+                timeResult = Double.parseDouble(sc.nextLine());
 
 
-            System.out.println("---------------------------------------");
-            System.out.println("Vælg svømmedisciplin:");
-            for (SwimmingDisciplines sd : SwimmingDisciplines.values()) {
-                System.out.println(sd.ordinal() + 1 + ": " + sd); //ordinal = indeks af enum
+                System.out.println("---------------------------------------");
+                System.out.println("Vælg svømmedisciplin:");
+                for (SwimmingDisciplines sd : SwimmingDisciplines.values()) {
+                    System.out.println(sd.ordinal() + 1 + ": " + sd); //ordinal = indeks af enum
+                }
+                int index = Integer.parseInt(sc.nextLine());
+                if (index < 1 || index > SwimmingDisciplines.values().length) {
+                    System.out.println("Forkert input. vælg et tal fra listen!");
+                }
+                SwimmingDisciplines selectedDiscipline = SwimmingDisciplines.values()[index - 1];
+                new TrainingResult(date, timeResult, swimmerID, selectedDiscipline);
+                FileSaver.saveResultData();
+                System.out.println("Nyt resultat oprettet");
+                System.out.println("--------------");
+                break;
+            } catch (Exception e) {
+                System.out.println("Forkert brug den korrekte datatype");
             }
-            int index = Integer.parseInt(sc.nextLine());
-            if (index < 1 || index > SwimmingDisciplines.values().length) {
-                System.out.println("Forkert input. vælg et tal fra listen!");
-            }
-            SwimmingDisciplines selectedDiscipline = SwimmingDisciplines.values()[index - 1];
-            new TrainingResult(date, timeResult, swimmerID, selectedDiscipline);
-            FileSaver.saveResultData();
-            System.out.println("Nyt resultat oprettet");
-        } catch (Exception e) {
-            System.out.println("Forkert input");
         }
     }
 
@@ -201,7 +205,7 @@ while(running) {
         while (true) {
             try {
 
-                System.out.println("-------------------------------");
+                System.out.println("-------------------------------------------");
                 System.out.println("Indtast svømmerens ID");
                 swimmerID = Integer.parseInt(sc.nextLine());
 
@@ -222,7 +226,7 @@ while(running) {
                 tournamentPlacement = Integer.parseInt(sc.nextLine());
 
 
-                System.out.println("---------------------------------------");
+                System.out.println("-------------------------------------------");
                 System.out.println("Vælg svømmedisciplin:");
                 for (SwimmingDisciplines sd : SwimmingDisciplines.values()) {
                     System.out.println(sd.ordinal() + 1 + ": " + sd); // ordinal = index of enum
@@ -238,10 +242,10 @@ while(running) {
                     new CompetitionResult(date, timeResult, swimmerID, selectedDiscipline, tournamentName, tournamentPlacement);
                     FileSaver.saveResultData();
                     System.out.println("Nyt resultat oprettet");
+                    System.out.println("-------------------------------------------");
                     break;
                 } else {
                     System.out.println("No discipline selected. Try again.");
-                    continue;
                 }
 
             } catch (NumberFormatException e) {

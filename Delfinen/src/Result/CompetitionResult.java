@@ -4,8 +4,8 @@ import Enums.*;
 
 
 public class CompetitionResult extends Result {
-    protected String tournamentName;
-    protected int tournamentPlacement;
+    private String tournamentName;
+    private int tournamentPlacement;
 
     public CompetitionResult(String date, double timeResult, int swimmerID, SwimmingDisciplines swimmingDiscipline, String tournamentName, int tournamentPlacement) {
         super(date, timeResult, swimmerID, swimmingDiscipline);

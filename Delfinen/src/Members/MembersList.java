@@ -17,6 +17,7 @@ public class MembersList {
     public static void displaySpecficCasualSwimmer(MembershipFees membershipFees) {
         for (Member m : memberList) {
             if (m.getClass() == CasualSwimmer.class && m.getMembershipFee() == membershipFees.getFee()) {
+                System.out.println("-------------------------------------------");
             System.out.println(m);
         }
     }
@@ -24,6 +25,7 @@ public class MembersList {
     public static void displaySpecficCompetitivelSwimmer(MembershipFees membershipFees) {
         for (Member m : memberList) {
             if (m.getClass() == CompetitiveSwimmer.class && m.getMembershipFee() == membershipFees.getFee()) {
+                System.out.println("-------------------------------------------");
                 System.out.println(m);
             }
         }
@@ -31,12 +33,14 @@ public class MembersList {
     public static void displayAllMembers(){
     for (Member m : memberList) {
             System.out.println(m);
+        System.out.println("-------------------------------------------");
     }
 }
     public static void displayMembersOnCategory(Class s){
     for (Member m : memberList) {
         if (m.getClass() == s) {
             System.out.println(m);
+            System.out.println("-------------------------------------------");
         }
     }
 }

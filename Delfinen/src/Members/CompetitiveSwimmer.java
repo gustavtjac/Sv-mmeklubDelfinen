@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 public class CompetitiveSwimmer extends Member {
     private ArrayList<SwimmingDisciplines> swimDisciplines = new ArrayList<>();
-    protected ArrayList<Result> swimmerResultList = new ArrayList<>();
+    private ArrayList<Result> swimmerResultList = new ArrayList<>();
 
 
     public CompetitiveSwimmer(String name, boolean isMemberActive, int age,  boolean inArreas,ArrayList<SwimmingDisciplines> swimmingDisciplines) {
